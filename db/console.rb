@@ -8,5 +8,7 @@ album1 = Album.new({'name' => '2014 Forrest Hills Drive',
                     'genre' => 'Hip Hop',
                     'artist_id' => artist1.id})
 
+artist1.save()
+
 binding.pry
 nil
