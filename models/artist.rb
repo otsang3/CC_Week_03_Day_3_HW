@@ -6,5 +6,5 @@ class Artist
     @name = options['name']
     @id = options['id'].to_i if options['id']
   end
-  
+
 end
