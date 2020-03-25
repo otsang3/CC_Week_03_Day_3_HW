@@ -22,7 +22,7 @@ class Album
     ) VALUES
     (
       $1, $2, $3
-      ) RETURNING *"
+      ) RETURNING id"
     values = [@name, @genre, @artist_id]
     @id = SqlRunner.run(sql, values)[0]["id"].to_i
   end
@@ -30,6 +30,12 @@ class Album
   def Album.delete_all()
     sql = "DELETE FROM albums"
     SqlRunner.run(sql, [])
+  end
+
+  def delete()
+    sql = "DELETE FROM albums WHERE id = $1"
+    values = [id]
+    SqlRunner.run(sql, values)
   end
 
 end
