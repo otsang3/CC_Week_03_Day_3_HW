@@ -38,4 +38,34 @@ class Album
     SqlRunner.run(sql, values)
   end
 
+  def update()
+    sql = "
+    UPDATE albums SET
+    (
+      name
+      genre
+      artist_id
+    ) =
+    (
+      $1, $2, $3
+    ) WHERE id = $4"
+    values = [@name, @genre, @artist_id, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def Album.find(id)
+    sql = "SELECT * FROM albums WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    album_hash = results.first
+    albums = Album.new(album_hash)
+    return albums
+  end
+
+  def Album.all()
+    sql = "SELECT * FROM albums"
+    albums = SqlRunner.run(sql, [])
+    return albums.map { |album| Artist.new(album) }
+  end
+
 end
