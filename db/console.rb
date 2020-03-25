@@ -8,7 +8,11 @@ album1 = Album.new({'name' => '2014 Forrest Hills Drive',
                     'genre' => 'Hip Hop',
                     'artist_id' => artist1.id})
 
+Artist.delete_all()
+Album.delete_all()
+
 artist1.save()
+album1.save()
 
 binding.pry
 nil

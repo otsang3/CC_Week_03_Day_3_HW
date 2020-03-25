@@ -16,4 +16,9 @@ class Artist
     @id = SqlRunner.run(sql, values)[0]["id"].to_i
   end
 
+  def Artist.delete_all()
+    sql = "DELETE FROM artists"
+    SqlRunner.run(sql, [])
+  end
+
 end
